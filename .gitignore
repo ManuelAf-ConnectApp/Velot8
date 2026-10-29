@@ -4,4 +4,14 @@
 /build/
 *.d
 *.o
+*.dSYM/
+*.gcda
+*.gcno
+*.gcov
+*.profraw
+*.profdata
+coverage/
+compile_commands.json
 .DS_Store
+Thumbs.db
+Desktop.ini

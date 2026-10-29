@@ -53,19 +53,19 @@ test-sdl: $(BUILD_DIR)/test/test_input $(BUILD_DIR)/test/test_video $(BUILD_DIR)
 $(BUILD_DIR)/test/test_input: tests/test_input.c src/frontend/sdl2/input.c $(CORE_SOURCES)
 	@test -n "$(SDL_LIBS)" || { echo "SDL2 not found: install it and pkg-config (see README.md)." >&2; exit 1; }
 	@mkdir -p $(@D)
-	$(CC) $(CPPFLAGS) $(SDL_CFLAGS) $(CFLAGS) -O0 -g $^ $(LDFLAGS) $(SDL_LIBS) -o $@
+	$(CC) $(CPPFLAGS) $(SDL_CFLAGS) -DSDL_MAIN_HANDLED $(CFLAGS) -O0 -g $^ $(LDFLAGS) $(SDL_LIBS) -o $@
 	$@
 
 $(BUILD_DIR)/test/test_video: tests/test_video.c src/frontend/sdl2/video.c $(CORE_SOURCES)
 	@test -n "$(SDL_LIBS)" || { echo "SDL2 not found: install it and pkg-config (see README.md)." >&2; exit 1; }
 	@mkdir -p $(@D)
-	$(CC) $(CPPFLAGS) $(SDL_CFLAGS) $(CFLAGS) -O0 -g $^ $(LDFLAGS) $(SDL_LIBS) -o $@
+	$(CC) $(CPPFLAGS) $(SDL_CFLAGS) -DSDL_MAIN_HANDLED $(CFLAGS) -O0 -g $^ $(LDFLAGS) $(SDL_LIBS) -o $@
 	$@
 
 $(BUILD_DIR)/test/test_audio: tests/test_audio.c src/frontend/sdl2/audio.c $(CORE_SOURCES)
 	@test -n "$(SDL_LIBS)" || { echo "SDL2 not found: install it and pkg-config (see README.md)." >&2; exit 1; }
 	@mkdir -p $(@D)
-	$(CC) $(CPPFLAGS) $(SDL_CFLAGS) $(CFLAGS) -O0 -g $^ $(LDFLAGS) $(SDL_LIBS) -o $@
+	$(CC) $(CPPFLAGS) $(SDL_CFLAGS) -DSDL_MAIN_HANDLED $(CFLAGS) -O0 -g $^ $(LDFLAGS) $(SDL_LIBS) -o $@
 	$@
 
 run: debug
