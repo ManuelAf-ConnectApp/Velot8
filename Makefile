@@ -86,7 +86,7 @@ format:
 	@command -v clang-format >/dev/null 2>&1 || { echo "clang-format is not installed" >&2; exit 1; }
 	clang-format -i $(CORE_SOURCES) $(DEMO_SOURCES) $(SDL_SOURCES) src/main.c tests/test_core.c include/velot8/*.h src/demo/*.h src/frontend/sdl2/*.h
 
-ifeq ($(findstring MSYS,$(HOST_OS)),MSYS)
+ifneq (,$(filter MSYS% MINGW%,$(HOST_OS)))
 sanitize:
 	@echo "Sanitizers are unavailable with the MSYS2 UCRT64 GCC package; skipping."
 else
