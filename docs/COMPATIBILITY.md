@@ -35,6 +35,18 @@ Useful baseline candidates are `bin/3-corax+.ch8`, `bin/4-flags.ch8`, `bin/5-qui
 |---|---|---|---|---|---|
 | Timendus v4.2 | `bin/3-corax+.ch8` | `modern` | Pass | Manual visual check; no anomaly reported | 2026-10-29 |
 
+## External smoke checks
+
+On 2026-10-30, the Timendus suite checkout `742e9ea` was cloned outside this
+repository and not vendored. Each of `bin/4-flags.ch8`, `bin/5-quirks.ch8` and
+`bin/6-keypad.ch8` ran headlessly for 100,000 instructions with the `modern`,
+`vip` and `chip48` profiles. Every run completed without an emulation error and
+updated the framebuffer.
+
+This only checks that the ROMs execute safely; it is not a conformance result.
+The visible screen outcomes and keypad interactions still need manual
+verification before changing the compatibility table above.
+
 ## Known gaps
 
 - External ROM validation is incomplete: only Corax+ has been recorded so far, for
