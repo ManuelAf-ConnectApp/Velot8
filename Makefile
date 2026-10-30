@@ -12,6 +12,7 @@ DEMO_SOURCES := src/demo/demo_rom.c
 SDL_SOURCES := src/frontend/sdl2/app.c src/frontend/sdl2/audio.c src/frontend/sdl2/video.c src/frontend/sdl2/input.c
 SDL_CFLAGS := $(shell pkg-config --cflags sdl2 2>/dev/null)
 SDL_LIBS := $(shell pkg-config --libs sdl2 2>/dev/null)
+HOST_OS := $(shell uname -s)
 
 PROFILE ?= modern
 
@@ -85,6 +86,10 @@ format:
 	@command -v clang-format >/dev/null 2>&1 || { echo "clang-format is not installed" >&2; exit 1; }
 	clang-format -i $(CORE_SOURCES) $(DEMO_SOURCES) $(SDL_SOURCES) src/main.c tests/test_core.c include/velot8/*.h src/demo/*.h src/frontend/sdl2/*.h
 
+ifeq ($(findstring MSYS,$(HOST_OS)),MSYS)
+sanitize:
+	@echo "Sanitizers are unavailable with the MSYS2 UCRT64 GCC package; skipping."
+else
 sanitize: $(BUILD_DIR)/sanitize/test_core
 	$<
 
@@ -92,6 +97,7 @@ $(BUILD_DIR)/sanitize/test_core: tests/test_core.c $(CORE_SOURCES)
 	@mkdir -p $(@D)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer \
 	$^ $(LDFLAGS) -fsanitize=address,undefined $(LDLIBS) -o $@
+endif
 
 clean:
 	rm -rf $(BUILD_DIR)
