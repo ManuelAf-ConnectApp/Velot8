@@ -5,6 +5,13 @@
 
 Velot8 is an educational C11 CHIP-8 emulator. Keep the core independent of SDL2 and host services; platform integration belongs in `src/frontend/`.
 
+Discuss broad ideas in GitHub Discussions first. Once an idea has a small,
+testable scope, open an **Evolution proposal** using the issue form and state
+the problem, non-goals, acceptance criteria and compatibility/licensing impact.
+See [docs/ROADMAP.md](docs/ROADMAP.md) for the contribution lifecycle and
+current community backlog. Comment on an issue before beginning substantial
+work; maintainers assign it only after the contributor confirms availability.
+
 Before proposing a change, run:
 
 ```sh

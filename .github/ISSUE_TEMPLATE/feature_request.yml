@@ -1,0 +1,64 @@
+name: Evolution proposal
+description: Propose a scoped, community-developable improvement to Velot8.
+title: "evolution: "
+labels:
+  - enhancement
+  - design needed
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Discuss broad ideas first in GitHub Discussions. Use this form once the
+        problem is clear enough to define an independently reviewable change.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Who is affected and what cannot they do today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed scope
+      description: Describe the smallest useful change. Link relevant design material.
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals
+      description: State explicitly what this proposal will not implement.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List observable outcomes and the tests or manual checks needed.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - Core emulation
+        - SDL frontend
+        - Audio
+        - Testing
+        - Tooling or packaging
+        - Documentation
+        - Community process
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and licensing impact
+      description: Note ROM, asset, API, save-data, platform or license implications; write “None known” if applicable.
+    validations:
+      required: true

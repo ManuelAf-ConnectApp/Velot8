@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Roadmap and design discussion
+    url: https://github.com/ManuelAf-ConnectApp/Velot8/discussions
+    about: Discuss broad ideas before opening a scoped evolution proposal.
+  - name: Security report
+    url: https://github.com/ManuelAf-ConnectApp/Velot8/security/advisories/new
+    about: Report security-sensitive issues privately.
