@@ -65,6 +65,10 @@ Z X C V     -> A 0 B F
 
 The external compatibility procedure and its intentionally conservative result matrix live in [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md). External GPL-licensed test ROMs are never bundled with Velot8.
 
+Run `scripts/run-test-battery.sh` for the complete automated local battery. To
+include external smoke checks after separately downloading the Timendus suite,
+use `SUITE_DIR=/path/to/chip8-test-suite scripts/run-test-battery.sh`.
+
 ## Architecture
 
 `include/velot8/` is the SDL-free public API. `src/core/` owns CHIP-8 state and execution. `src/frontend/sdl2/` converts its monochrome framebuffer into a persistent RGBA8888 texture and owns wall-clock scheduling, events and window resources. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
