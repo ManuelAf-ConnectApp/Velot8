@@ -11,9 +11,9 @@ Velot8 currently targets baseline CHIP-8 only. It does not claim compatibility w
 
 | Profile | Core unit tests | SDL input test | External ROM suite |
 |---|---:|---:|---:|
-| `modern` | Pass | Pass | Partial pass (Corax+) |
-| `vip` | Pass (quirk coverage) | Pass | Not run |
-| `chip48` | Pass (quirk coverage) | Pass | Not run |
+| `modern` | Pass | Pass | Pass (Corax+, flags, quirks, keypad) |
+| `vip` | Pass (quirk coverage) | Pass | Pass (flags, quirks, keypad) |
+| `chip48` | Pass (quirk coverage) | Pass | Pass (flags, quirks, keypad) |
 
 ## External conformance suite
 
@@ -34,6 +34,15 @@ Useful baseline candidates are `bin/3-corax+.ch8`, `bin/4-flags.ch8`, `bin/5-qui
 | Suite version | ROM | Profile | Result | Verification | Date |
 |---|---|---|---|---|---|
 | Timendus v4.2 | `bin/3-corax+.ch8` | `modern` | Pass | Manual visual check; no anomaly reported | 2026-10-29 |
+| Timendus v4.2 | `bin/4-flags.ch8` | `modern` | Pass | Manual visual check; no anomaly reported | 2026-10-30 |
+| Timendus v4.2 | `bin/4-flags.ch8` | `vip` | Pass | Manual visual check; no anomaly reported | 2026-10-30 |
+| Timendus v4.2 | `bin/4-flags.ch8` | `chip48` | Pass | Manual visual check; no anomaly reported | 2026-10-30 |
+| Timendus v4.2 | `bin/5-quirks.ch8` | `modern` | Pass | Manual visual check; selected profile matched | 2026-10-30 |
+| Timendus v4.2 | `bin/5-quirks.ch8` | `vip` | Pass | Manual visual check; selected profile matched | 2026-10-30 |
+| Timendus v4.2 | `bin/5-quirks.ch8` | `chip48` | Pass | Manual visual check; selected profile matched | 2026-10-30 |
+| Timendus v4.2 | `bin/6-keypad.ch8` | `modern` | Pass | Manual visual and keypad check; no anomaly reported | 2026-10-30 |
+| Timendus v4.2 | `bin/6-keypad.ch8` | `vip` | Pass | Manual visual and keypad check; no anomaly reported | 2026-10-30 |
+| Timendus v4.2 | `bin/6-keypad.ch8` | `chip48` | Pass | Manual visual and keypad check; no anomaly reported | 2026-10-30 |
 
 ## External smoke checks
 
@@ -43,13 +52,13 @@ repository and not vendored. Each of `bin/4-flags.ch8`, `bin/5-quirks.ch8` and
 `vip` and `chip48` profiles. Every run completed without an emulation error and
 updated the framebuffer.
 
-This only checks that the ROMs execute safely; it is not a conformance result.
-The visible screen outcomes and keypad interactions still need manual
-verification before changing the compatibility table above.
+The smoke checks only establish that the ROMs execute safely. The manual visual
+and keypad verification recorded above is the conformance evidence; neither
+result claims general CHIP-8 compatibility.
 
 ## Known gaps
 
-- External ROM validation is incomplete: only Corax+ has been recorded so far, for
-  the `modern` profile.
+- External ROM validation covers the listed Timendus baseline ROMs only; it does
+  not establish general CHIP-8 compatibility.
 - SCHIP/XO-CHIP tests are out of scope.
 - Visual, audio and timing outcomes need manual or future automated integration verification.
