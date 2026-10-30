@@ -11,7 +11,7 @@ Velot8 currently targets baseline CHIP-8 only. It does not claim compatibility w
 
 | Profile | Core unit tests | SDL input test | External ROM suite |
 |---|---:|---:|---:|
-| `modern` | Pass | Pass | Not run |
+| `modern` | Pass | Pass | Partial pass (Corax+) |
 | `vip` | Pass (quirk coverage) | Pass | Not run |
 | `chip48` | Pass (quirk coverage) | Pass | Not run |
 
@@ -29,8 +29,15 @@ make conformance SUITE_DIR=/path/to/chip8-test-suite ROM=bin/3-corax+.ch8 PROFIL
 
 Useful baseline candidates are `bin/3-corax+.ch8`, `bin/4-flags.ch8`, `bin/5-quirks.ch8`, and `bin/6-keypad.ch8`. Record the exact suite version, profile, command, observed screen result and date in a pull request before changing any `Not run` status above.
 
+## Observed external results
+
+| Suite version | ROM | Profile | Result | Verification | Date |
+|---|---|---|---|---|---|
+| Timendus v4.2 | `bin/3-corax+.ch8` | `modern` | Pass | Manual visual check; no anomaly reported | 2026-10-29 |
+
 ## Known gaps
 
-- No external ROM result is currently claimed.
+- External ROM validation is incomplete: only Corax+ has been recorded so far, for
+  the `modern` profile.
 - SCHIP/XO-CHIP tests are out of scope.
 - Visual, audio and timing outcomes need manual or future automated integration verification.

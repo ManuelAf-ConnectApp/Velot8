@@ -42,6 +42,8 @@ Without arguments, the graphical application opens a `NO ROM` window; `--demo` r
 
 `--version` prints the current release version (`0.1.0`). The release checklist and checksum procedure are in [docs/RELEASE.md](docs/RELEASE.md).
 
+The maintained handoff checklist is [docs/NEXT_STEPS.md](docs/NEXT_STEPS.md).
+
 The SDL-free scheduler bounds host-time catch-up to 100 ms, advances instructions at `--cpu-hz`, and ticks CHIP-8 timers independently at 60 Hz. Pausing the frontend stops calls into this scheduler, so emulated time does not advance while paused.
 
 ## Controls
